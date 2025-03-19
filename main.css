@@ -215,3 +215,40 @@ body{
     font-size: 38px;
     
 }
+
+.slide-4{
+    height: 100vh;
+    border: 2px solid blue;
+    padding: 40px 20px 20px 30px;
+}
+
+.slide-4-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slide-4-h2{
+    font-weight: 700;
+    color: rgba(26, 20, 20, 0.87);
+
+}
+
+.slide-4-h1{
+    font-weight: 700;
+    color: rgba(26, 20, 20, 1);
+
+}
+
+.slide-4-h1 span{
+    color: rgba(141, 9, 198, 1);
+    font-style: italic;
+    font-weight: 600;
+}
+
+.slide-4-fdiv{
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
