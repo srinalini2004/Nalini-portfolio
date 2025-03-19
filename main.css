@@ -197,7 +197,7 @@ body{
 .Ai-para{
     background-color: #330000;
     color: #FF9A00;
-    padding: 10px 15px 10px 15px;
+    padding: 10px 15px 6px 15px;
     border-radius: 10px;
     font-size: 24px;
     font-weight: bold;
@@ -209,4 +209,9 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.sketch{
+    font-size: 38px;
+    
 }
