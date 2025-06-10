@@ -1,137 +1,893 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nalini Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="main.css">
-    <script src="https://kit.fontawesome.com/b33a7fa15a.js" crossorigin="anonymous"></script>
+    <title>Bennabathula Nalini | UI/UX Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --tertiary-gradient: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --text-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: float 6s ease-in-out infinite, fadeIn 1s ease forwards;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 5px;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--primary-gradient);
+            color: var(--text-white);
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-content > div:first-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards 0.3s;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards 0.5s;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards 0.7s;
+        }
+
+        .contact-info a {
+            color: var(--text-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-info i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .header-shape {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-color: var(--bg-light);
+            clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--bg-light);
+            position: relative;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--bg-light);
+            position: relative;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-gradient);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: var(--bg-light);
+            position: relative;
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: calc(var(--delay) * 0.2s);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-header {
+            padding: 1.5rem;
+            background: var(--primary-gradient);
+            color: var(--text-white);
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-date {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-body p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #6a11cb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+        }
+
+        /* Education Section */
+        .education {
+            background-color: var(--bg-light);
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: "";
+            position: absolute;
+            width: 4px;
+            background: var(--primary-gradient);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 5px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: fadeRight 0.6s ease forwards;
+            animation-delay: calc(var(--delay) * 0.2s);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            transform: translateX(50px);
+            animation-name: fadeLeft;
+        }
+
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-light);
+            border: 4px solid #6a11cb;
+            border-radius: 50%;
+            z-index: 1;
+            top: 15px;
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .timeline-content .date {
+            color: #6a11cb;
+            font-weight: 600;
+        }
+
+        /* Certifications Section */
+        .certifications {
+            background-color: var(--bg-light);
+        }
+
+        .cert-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+            animation-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cert-card::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: var(--secondary-gradient);
+            bottom: 0;
+            left: 0;
+        }
+
+        .cert-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .cert-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .cert-card .date {
+            margin-top: 1rem;
+            font-weight: 500;
+            color: #6a11cb;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--primary-gradient);
+            color: var(--text-white);
+            position: relative;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-title {
+            color: var(--text-white);
+        }
+
+        .contact-title::after {
+            background: var(--text-white);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: popIn 0.5s ease forwards;
+            animation-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-link i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3436;
+            color: var(--text-white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeRight {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeLeft {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-info {
+                align-items: center;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .skills-container, .cert-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-light position-fixed w-100">
-            <a class="navbar-brand" href="#">SRI</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav ml-auto">
-                <a class="nav-link text-dark" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-link text-dark" href="#">About</a>
-                <a class="nav-link text-dark" href="#">Skills</a>
-                <a class="nav-link text-dark" href="#">Portfolio</a>
-                <a class="nav-link text-dark" href="#">Contact</a>
-                
-              </div>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div>
+                <img src="ecd60e98065343b6a73f1c2292502f2b.png" alt="Bennabathula Nalini" class="profile-image">
+                <h1 class="name">Bennabathula Nalini</h1>
+                <p class="title">UI/UX Designer & Developer</p>
             </div>
-          </nav>
-    </div>
-    <div class="container f-div"> 
-      <div class="row">
-            <div class="col-6">
-              <h2 class="main-head">Hello!</h2>
-              <h1 class="main-head">I'm Sri Nalini</h1>
-              <h1 class="main-head-2">UI/UX Designer</h1>
+            <div class="contact-info">
+                <a href="mailto:nalinisribb@gmail.com"><i class="fas fa-envelope"></i> nalinisribb@gmail.com</a>
+                <a href="tel:+917842163359"><i class="fas fa-phone"></i> +917842163359</a>
+                <a href="https://www.linkedin.com/in/sri-nalini-0b2252269/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://www.behance.net/srinalini"><i class="fab fa-behance"></i> Behance</a>
+            </div>
+        </div>
+        <div class="header-shape"></div>
+    </header>
 
-              <div class="first-icons d-flex flex-row justify-content-between">
-                    <div class="first-icon-images">
-                      <i class="fa-brands fa-linkedin f-icons"></i>
-                    </div>
-                    <div class="first-icon-images">
-                      <i class="fa-brands fa-github f-icons"></i>
-                    </div>
-                    <div class="first-icon-images"><i class="fa-brands fa-behance f-icons"></i></div>
-              </div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>A passionate and detail-driven UI/UX Designer with experience in creating intuitive and engaging user interfaces. Skilled in understanding user needs, conducting research, and delivering designs that enhance user experience.</p>
+                    <p>Seeking an opportunity to contribute my design skills and creativity to build seamless digital experiences that make a difference.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-              <button class="f-button">Download CV</button>
-            </div>
-            <div class="col-6">
-              <div class="imag">
-                <img class="nalini-img" src="images/pic1.png">
-              </div>
-            </div>
-      </div>
-    </div>
-    <div class="slide-2">
-      <div class="about-me-div">
-        <h1 class="about-me">About me</h1>
-        <hr class="about-me-hr">
-      </div>
-      <div class="about-me-details-div">
-        <h1 class="ui-ux-head">UI/UX Designer</h1>
-        <p class="about-me-para">UI/UX Designer with a Artificial intellegence and data science background. I leverage my technical understanding to craft efficient, user-centric designs. With a focus on creating intuitive and visually appealing experiences, I combine data-driven insights with a passion for innovation</p>
-        <button class="f-button">Read more</button>
-      </div>
-    </div>
-    <div class="slide-3">  
-        <h1 class="skills-head">My Skills</h1>
-        <div class="skills-tabs">
-            <div class="first-skills-tab">
-                  <h1 class="skills-tab-head">Skills Set</h1>
-                  <div class="skills-but-div">
-                    <div class="but-div">
-                      <button class="s-button">User research</button>
-                    <button class="s-button">Web Design</button>
-                    </div>
-                    <div class="but-div">
-                      <button class="s-button">Wire farming</button>
-                    <button class="s-button">App Design</button>
-                    </div>
-                    <div class="but-div">
-                      <button class="s-button">Typography</button>
-                    <button class="s-button">Prototyping</button>
-                    </div>
-                  </div>
-            </div>
-            <div class="first-skills-tab">
-              <h1 class="skills-tab-head">Technical Skill</h1>
-              <div class="skills-bit-div">
-                <div class="but-div">
-                  <img class="skills-icon" src="icons\photoshop.svg">
-                  <img class="skills-icon" src="icons\figma.svg">
-                  <img class="skills-icon" src="icons\canva.svg">
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card" style="--delay: 1">
+                    <h3><i class="fas fa-search"></i> User Research</h3>
+                    <p>Conducting user interviews, surveys, and usability tests to gather valuable insights for design decisions.</p>
                 </div>
-                <div class="but-div">
-                  <img class="skills-icon" src="icons\adobe-xd.svg">
-                  <p class="Ai-para">Ai</p>
-                  <i class="fa-brands fa-sketch sketch" style="color: #FFD43B;"></i>
+                <div class="skill-card" style="--delay: 2">
+                    <h3><i class="fas fa-users"></i> User Experience</h3>
+                    <p>Creating seamless user journeys and experiences that delight users and meet business objectives.</p>
                 </div>
-              </div>
+                <div class="skill-card" style="--delay: 3">
+                    <h3><i class="fas fa-pencil-ruler"></i> Wireframing</h3>
+                    <p>Developing low and high-fidelity wireframes that effectively communicate design concepts and functionality.</p>
+                </div>
+                <div class="skill-card" style="--delay: 4">
+                    <h3><i class="fas fa-font"></i> Typography</h3>
+                    <p>Selecting and implementing typography that enhances readability and supports brand identity.</p>
+                </div>
+                <div class="skill-card" style="--delay: 5">
+                    <h3><i class="fas fa-object-group"></i> Prototyping</h3>
+                    <p>Building interactive prototypes to test and validate design solutions before implementation.</p>
+                </div>
+                <div class="skill-card" style="--delay: 6">
+                    <h3><i class="fas fa-code"></i> HTML/CSS</h3>
+                    <p>Implementing designs with clean, semantic HTML and CSS to create responsive web experiences.</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="slide-4">
-      <div class="slide-4-head">
-        <div>
-          <h2 class="slide-4-h2">My Projects</h2>
-          <h1 class="slide-4-h1">My Latest <span>Portfolio</span></h1>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-container">
+                <div class="project-card" style="--delay: 1">
+                    <div class="project-header">
+                        <h3>E-COMMERCE WEBSITE</h3>
+                        <span class="project-date">Nov 2024</span>
+                    </div>
+                    <div class="project-body">
+                        <img src="eCommerce.jpeg" alt="Fashion Flair E-commerce UI" style="width: 100%; border-radius: 8px; margin-bottom: 15px; box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px; transition: transform 0.3s; transform: scale(1);" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                        <p>Designed a fully functional e-commerce website using Figma enabling users to discover and find personalized fashion items. Features include a curated collection of stylish clothing and accessories tailored to users' unique taste, with streamlined checkout process to enhance user experience.</p>
+                        <a href="https://www.behance.net/gallery/209747241/Fashion-Flair" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" style="--delay: 2">
+                    <div class="project-header" style="background: var(--secondary-gradient);">
+                        <h3>Food Delivery Application</h3>
+                        <span class="project-date">June 2024</span>
+                    </div>
+                    <div class="project-body">
+                        <img src="foodDelivery.jpeg" alt="Fashion Flair E-commerce UI" style="width: 100%; border-radius: 8px; margin-bottom: 15px; box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px; transition: transform 0.3s; transform: scale(1);" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                        <p>Food delivery apps are third party delivery services hosted on mobile applications that restaurants or retailers partner with to showcase their menu and food offerings, allowing customers to order food and get it delivered to their doorstep.</p>
+                        <a href="https://www.behance.net/gallery/218345499/Food-Delivery-App" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" style="--delay: 3">
+                    <div class="project-header" style="background: var(--tertiary-gradient);">
+                        <h3>Fake Job Detection</h3>
+                        <span class="project-date">Feb 2025 - April 2025</span>
+                    </div>
+                    <div class="project-body">
+                        <img src="fakeNewsDetection.jpeg" alt="Fashion Flair E-commerce UI" style="width: 100%; border-radius: 8px; margin-bottom: 15px; box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px; transition: transform 0.3s; transform: scale(1);" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                        <p>Developed a machine learning model to detect fake news using NLP techniques. Used Python, Scikit-learn, and Natural Language Processing (NLP) to analyze news articles. Achieved an accuracy of 90% in classifying real and fake news.</p>
+                        <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="slide-4-fdiv">
-          <button class="s-button">View all Projects</button>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item" style="--delay: 1">
+                    <div class="timeline-content">
+                        <h3>B.TECH</h3>
+                        <h4>KAKINADA INSTITUTE OF ENGINEERING AND TECHNOLOGY (AFFILIATED TO JNTUK), Korangi</h4>
+                        <p>CSE - 7.36</p>
+                        <p class="date">2021 - 2025</p>
+                    </div>
+                </div>
+                <div class="timeline-item" style="--delay: 2">
+                    <div class="timeline-content">
+                        <h3>INTERMEDIATE</h3>
+                        <h4>Vignan Jyothi Junior Collage, Yerravaram</h4>
+                        <p>MPC - 886</p>
+                        <p class="date">2019 - 2021</p>
+                    </div>
+                </div>
+                <div class="timeline-item" style="--delay: 3">
+                    <div class="timeline-content">
+                        <h3>SCC</h3>
+                        <h4>S.P.C.M.Z.P.P. High School, Geddanapalli</h4>
+                        <p>9.8</p>
+                        <p class="date">2018 - 2019</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="projects-div">
-        <div class="project-card-div">
-          <img class="project-img" src="images\873b68d608236cf734b09ec776ee71f4.png">
-          <button class="behance-button">Behance</button> 
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications" id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-container">
+                <div class="cert-card" style="--delay: 1">
+                    <h3>UI/UX Designing</h3>
+                    <p>Cognifyz Technologies</p>
+                    <p class="date">2025</p>
+                    <a target="_blank" href="https://drive.google.com/file/d/1nTbKqbTCNHVpg7vzImEU0sjuksKbQhLs/view?usp=drivesdk"><p>View --></p></a>
+                </div>
+                <div class="cert-card" style="--delay: 2">
+                    <h3>Figma Essential Training</h3>
+                    <p>Linked in Learning</p>
+                    <p class="date">2024</p>
+                    <a target="_blank" href="https://drive.google.com/file/d/1nnHL3310wP9lWRwOnYIaI4s4hsj1pDGn/view?usp=drivesdk"><p>View ==></p></a>
+                </div>
+                <div class="cert-card" style="--delay: 3">
+                    <h3>UI/UX for Beginners</h3>
+                    <p>Udemy</p>
+                    <p class="date">2024</p>
+                    <a target="_blank" href="https://drive.google.com/file/d/1nil7tvUcg99NRK1abnQTizK1QQ_gN0Bn/view?usp=drivesdk"><p>view --></p></a>
+                </div>
+            </div>
         </div>
-        <div class="project-card-div">
-          <img class="project-img" src="images\74013a15fe80ec91f9f6726689fad4f0.png">
-          <button class="behance-button">Behance</button> 
+    </section>
+
+    <!-- Soft Skills Section -->
+    <section class="skills" id="soft-skills">
+        <div class="container">
+            <h2 class="section-title">Soft Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card" style="--delay: 1">
+                    <h3><i class="fas fa-rocket"></i> Self Motivated</h3>
+                    <p>Driven to achieve goals and continuously improve my skills without external pressure.</p>
+                </div>
+                <div class="skill-card" style="--delay: 2">
+                    <h3><i class="fas fa-users-cog"></i> Teamwork</h3>
+                    <p>Collaborating effectively with cross-functional teams to achieve common objectives.</p>
+                </div>
+                <div class="skill-card" style="--delay: 3">
+                    <h3><i class="fas fa-sync-alt"></i> Adaptability</h3>
+                    <p>Quickly adjusting to new technologies, workflows, and project requirements.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="slide-5">
-      <h1 class="slide-5-head">Get in touch</h1>
-      <div class="slide-5-input">
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-      </div>
-      <input class="email-slide-5" type="text" placeholder="Email">
-      <textarea cols="60" rows="8" placeholder="Message"></textarea>
-      <button class="s-button slide-5-button">SEND</button>
-    </div>
+    </section>
+
+    <!-- Internships Section -->
+    <section class="skills" id="internships">
+        <div class="container">
+            <h2 class="section-title">Internships</h2>
+            <div class="skills-container">
+                <div class="skill-card" style="--delay: 1">
+                    <h3><i class="fas fa-laptop-code"></i> UI/UX Internship</h3>
+                    <p>Cognifyz Technologies</p>
+                    <p>Designed user interfaces and conducted usability tests for various digital products.</p>
+                </div>
+                <div class="skill-card" style="--delay: 2">
+                    <h3><i class="fas fa-cloud"></i> Salesforce Developer</h3>
+                    <p>Virtual Internship</p>
+                    <p>Developed custom solutions using Salesforce platform tools and technologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <h2 class="section-title contact-title">Get In Touch</h2>
+                <p>Feel free to reach out for collaborations or just a friendly chat</p>
+                <div class="contact-links">
+                    <a href="mailto:nalinisribb@gmail.com" class="contact-link" style="--delay: 1">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/sri-nalini-0b2252269/" class="contact-link" style="--delay: 2">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.behance.net/srinalini" class="contact-link" style="--delay: 3">
+                        <i class="fab fa-behance"></i>
+                        <span>Behance</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Bennabathula Nalini. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal animations on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reveal elements on scroll
+            const revealElements = document.querySelectorAll('.skill-card, .project-card, .timeline-item, .cert-card');
+            
+            function reveal() {
+                revealElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.style.animationPlayState = 'running';
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', reveal);
+            reveal(); // Initial check on page load
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
